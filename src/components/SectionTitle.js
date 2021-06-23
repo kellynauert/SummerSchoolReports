@@ -1,25 +1,25 @@
-import { Grid, Typography, Row } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 
 const SectionTitle = ({ text }) => {
   return (
-    <Grid container item sm={12} style={{ marginTop: '24px ' }}>
-      <Grid item sm={4} style={{ overflow: 'hidden' }}>
-        <Typography
-          variant='caption'
-          style={{ overflow: 'hidden', whiteSpace: 'nowrap' }}
-        >
-          ────────────────────────────────────────────────────────────
+    <Grid
+      container
+      item
+      sm={12}
+      style={{ margin: '42px 0 12px 0' }}
+      alignItems='center'
+    >
+      <Grid container item sm style={{ overflow: 'hidden' }}>
+        <Typography variant='caption'>
+          ───────────────────────────────────────────────────────────────────────────────────────────
         </Typography>
       </Grid>
-      <Grid item sm={4} style={{ backgroundColor: 'white' }}>
-        <Typography variant='h2'>{text}</Typography>
+      <Grid item sm={2} style={{ backgroundColor: 'white', margin: '0 12px' }}>
+        <Typography variant='sectionHeader'>{text}</Typography>
       </Grid>
-      <Grid item sm={4} style={{ overflow: 'hidden' }}>
-        <Typography
-          variant='caption'
-          style={{ overflow: 'hidden', whiteSpace: 'nowrap' }}
-        >
-          ────────────────────────────────────────────────────────────
+      <Grid item sm style={{ overflow: 'hidden' }}>
+        <Typography variant='caption'>
+          ───────────────────────────────────────────────────────────────────────────────────────────
         </Typography>
       </Grid>
     </Grid>

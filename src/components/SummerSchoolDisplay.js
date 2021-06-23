@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Grid } from '@material-ui/core';
 
 import SSPage from './SSPage';
-import SSIntroPage from './SSIntroPage';
 const SummerSchoolDisplay = (props) => {
   const [jsonData, setJsonData] = useState();
 
@@ -17,7 +15,6 @@ const SummerSchoolDisplay = (props) => {
       {jsonData
         ? jsonData.map((data) => (
             <>
-              {/* <SSIntroPage student={data.student} /> */}
               <SSPage
                 student={data.student}
                 mathspaceId={data.mathspaceId}

@@ -42,7 +42,7 @@ const SummerSchoolPaste = (props) => {
         >
           <DialogTitle id='form-dialog-title'>Update JSON</DialogTitle>
           <DialogContent>
-            <Typography variant='subtitle2'>
+            <Typography variant='sub1'>
               Follow the directions on generating a JSON on the 'Reports
               Automation' Google Sheet and paste below.
             </Typography>
