@@ -3,6 +3,7 @@ import { Grid, Typography } from '@material-ui/core';
 import SSDataCard from './SSDataCard';
 import SectionTitle from './SectionTitle';
 import CRELogo from '../images/creLogo.png';
+
 const SSPage = (props) => {
   console.log(props);
   return (

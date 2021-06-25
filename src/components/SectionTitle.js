@@ -8,10 +8,11 @@ const SectionTitle = ({ text }) => {
       sm={12}
       style={{ margin: '42px 0 12px 0' }}
       alignItems='center'
+      textAlign='center'
     >
       <Grid container item sm style={{ overflow: 'hidden' }}>
         <Typography variant='caption'>
-          ───────────────────────────────────────────────────────────────────────────────────────────
+          ───────────────────────────────────────────────────────────────────────────────────────────────────────────────
         </Typography>
       </Grid>
       <Grid item sm={2} style={{ backgroundColor: 'white', margin: '0 12px' }}>
@@ -19,7 +20,7 @@ const SectionTitle = ({ text }) => {
       </Grid>
       <Grid item sm style={{ overflow: 'hidden' }}>
         <Typography variant='caption'>
-          ───────────────────────────────────────────────────────────────────────────────────────────
+          ───────────────────────────────────────────────────────────────────────────────────────────────────────────────
         </Typography>
       </Grid>
     </Grid>

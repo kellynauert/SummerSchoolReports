@@ -1,5 +1,5 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-const theme = createMuiTheme({
+import { createTheme } from '@material-ui/core/styles';
+const theme = createTheme({
   typography: {
     fontFamily: `"Source Sans Pro", "Helvetica", "Arial", sans-serif`,
     fontSize: 14,
@@ -37,6 +37,19 @@ const theme = createMuiTheme({
       fontWeight: '300',
       textAlign: 'left',
       display: 'block',
+      fontFamily: `"Source Sans Pro", "Helvetica", "Arial", sans-serif`,
+    },
+    nonxr: {
+      fontSize: '12px',
+      fontWeight: '600',
+      color: '#808285',
+      marginRight: '4px',
+      fontFamily: `"Source Sans Pro", "Helvetica", "Arial", sans-serif`,
+    },
+    nonxrData: {
+      fontSize: '12px',
+      fontWeight: '600',
+      marginRight: '4px',
       fontFamily: `"Source Sans Pro", "Helvetica", "Arial", sans-serif`,
     },
     info: {

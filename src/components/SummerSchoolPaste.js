@@ -5,11 +5,10 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  Typography,
+  DialogContentText,
   Button,
   Box,
 } from '@material-ui/core';
-import { display } from '@material-ui/system';
 import SummerSchoolDisplay from './SummerSchoolDisplay';
 const SummerSchoolPaste = (props) => {
   const [pasteData, setPasteData] = useState('');
@@ -31,7 +30,14 @@ const SummerSchoolPaste = (props) => {
 
   return (
     <>
-      <Box display='block' displayPrint='none'>
+      <Box
+        displayPrint='none'
+        style={{
+          padding: '16px',
+          margin: '0 -5% ',
+          borderBottom: '1px solid gray',
+        }}
+      >
         <Button variant='outlined' color='primary' onClick={handleClickOpen}>
           Update JSON
         </Button>
@@ -42,11 +48,11 @@ const SummerSchoolPaste = (props) => {
         >
           <DialogTitle id='form-dialog-title'>Update JSON</DialogTitle>
           <DialogContent>
-            <Typography variant='sub1'>
+            <DialogContentText>
               Follow the directions on generating a JSON on the 'Reports
               Automation' Google Sheet and paste below.
-            </Typography>
-
+            </DialogContentText>
+            <br></br>
             <TextField
               rows={8}
               rowsMax={8}
@@ -59,7 +65,6 @@ const SummerSchoolPaste = (props) => {
               autoFocus
               value={pasteData}
               onChange={(e) => setPasteData(e.target.value)}
-              style={{ fontSize: '12px' }}
             />
           </DialogContent>
           <DialogActions>

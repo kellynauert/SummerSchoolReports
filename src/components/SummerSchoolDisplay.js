@@ -11,7 +11,7 @@ const SummerSchoolDisplay = (props) => {
   }, [props.jsonData]);
 
   return (
-    <div style={{ width: '94%', marginLeft: '3%' }}>
+    <div>
       {jsonData
         ? jsonData.map((data) => (
             <>

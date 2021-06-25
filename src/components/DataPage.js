@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Grid, Typography, TextField, Paper } from '@material-ui/core';
 import DataSection from './DataSection';
+import CRELogo from '../images/creLogo.png';
 
-const DataPage = ({ keys, jsonData }) => {
+const DataPage = ({
+  keys,
+  jsonData,
+  options,
+  type,
+  savedDataFunction,
+  pageNumber,
+}) => {
   const [pageName, setPageName] = React.useState(['']);
   const [isShown, setIsShown] = useState(false);
 
   return (
-    <Grid
-      container
-      direction='row'
-      spacing={2}
-      justify='center'
-      alignItems='center'
-    >
+    <div style={{ display: 'block' }} className='page-break'>
       {isShown ? (
         <Paper
           style={{
@@ -37,27 +39,52 @@ const DataPage = ({ keys, jsonData }) => {
 
       <Grid
         container
+        item
+        sm={12}
         direction='row'
-        spacing={2}
         style={{
-          width: '612px',
           border: '10px solid #00aeef',
           borderRadius: '12px',
+          padding: '16px 16px 36px 16px',
+          marginTop: '16px',
         }}
         justify='center'
         alignItems='flex-end'
       >
+        <Grid
+          container
+          item
+          alignItems='center'
+          justify='space-between'
+          style={{ marginBottom: '18px' }}
+        >
+          <Grid container item sm={6} justify='flex-start'>
+            <img src={CRELogo} alt='Logo' style={{ height: '30px' }} />
+          </Grid>
+          <Grid item sm={6}>
+            <Typography variant='info'>Cathedral High School 2021</Typography>
+          </Grid>
+        </Grid>
         <Grid
           item
           md={12}
           onMouseEnter={() => setIsShown(true)}
           onMouseLeave={() => setIsShown(false)}
         >
-          <Typography variant='h1'>{pageName}</Typography>
+          {pageName ? (
+            <Typography variant='pageHeader'>{pageName}</Typography>
+          ) : null}
         </Grid>
-        <DataSection jsonData={jsonData} keys={keys} />
+        <DataSection
+          jsonData={jsonData}
+          options={options}
+          keys={keys}
+          type={type}
+          sectionKey={`${pageNumber}-section-0`}
+          savedDataFunction={savedDataFunction}
+        />
       </Grid>
-    </Grid>
+    </div>
   );
 };
 export default DataPage;
