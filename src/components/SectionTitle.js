@@ -1,6 +1,10 @@
-import { Grid, Typography } from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
+import { Grid, Typography, TextField } from '@material-ui/core';
 
-const SectionTitle = ({ text }) => {
+const SectionTitle = ({ text, handleSectionTextChange, sectionText }) => {
+  const [hidden, setHidden] = useState(true);
+  const handleHidden = () => setHidden(!hidden);
+
   return (
     <Grid
       container
@@ -16,7 +20,25 @@ const SectionTitle = ({ text }) => {
         </Typography>
       </Grid>
       <Grid item sm={2} style={{ backgroundColor: 'white', margin: '0 12px' }}>
-        <Typography variant='sectionHeader'>{text}</Typography>
+        {hidden ? (
+          <Typography
+            variant='sectionHeader'
+            onClick={handleHidden}
+            style={{ cursor: 'pointer' }}
+          >
+            {text}
+          </Typography>
+        ) : (
+          <TextField
+            fullWidth
+            variant='outlined'
+            label='Section Name'
+            onBlur={handleHidden}
+            value={sectionText}
+            onChange={(e) => handleSectionTextChange(e)}
+            style={{ margin: '4px' }}
+          />
+        )}
       </Grid>
       <Grid item sm style={{ overflow: 'hidden' }}>
         <Typography variant='caption'>

@@ -1,5 +1,13 @@
 import { createTheme } from '@material-ui/core/styles';
 const theme = createTheme({
+  palette: {
+    secondary: {
+      main: '#ec008c',
+    },
+    primary: {
+      main: '#00aeef',
+    },
+  },
   typography: {
     fontFamily: `"Source Sans Pro", "Helvetica", "Arial", sans-serif`,
     fontSize: 14,
@@ -27,6 +35,7 @@ const theme = createTheme({
     },
     dataDescription: {
       fontSize: '12px',
+      marginTop: '16px',
       color: '#808285',
       display: 'block',
       fontWeight: '300',

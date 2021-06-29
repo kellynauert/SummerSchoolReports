@@ -12,7 +12,6 @@ const DataRow = ({
   sectionKey,
 }) => {
   const [nRows, setNRows] = useState(2);
-
   useEffect(() => {
     setNRows(rows);
   }, [rows]);
@@ -26,22 +25,24 @@ const DataRow = ({
         spacing={1}
         alignItems='flex-end'
         textAlign='center'
+        style={{ margin: '24px 0' }}
+        key={`${sectionKey}-${index}-row-${i}-grid`}
       >
         <DataCard
           groupIndex={index}
           data={jsonData}
           savedDataFunction={savedDataFunction}
           optionItems={keys}
-          cardIndex={`${pageNumber}-${index}-${sectionKey}-row-${i}-card-1`}
-          key={`${pageNumber}-${index}-${sectionKey}-row-${i}-card-1`}
+          cardIndex={`${sectionKey}-${index}-row-${i}-card-1`}
+          key={`${sectionKey}-${index}-row-${i}-card-1`}
         />
         <DataCard
           groupIndex={index}
           data={jsonData}
           savedDataFunction={savedDataFunction}
           optionItems={keys}
-          cardIndex={`${pageNumber}-${index}-${sectionKey}-row-${i}-card-2`}
-          key={`${pageNumber}-${index}-${sectionKey}-row-${i}-card-2`}
+          cardIndex={`${sectionKey}-${index}-row-${i}-card-2`}
+          key={`${sectionKey}-${index}-row-${i}-card-2`}
         />
 
         <DataCard
@@ -49,8 +50,8 @@ const DataRow = ({
           savedDataFunction={savedDataFunction}
           data={jsonData}
           optionItems={keys}
-          cardIndex={`${pageNumber}-${index}-${sectionKey}-row-${i}-card-3`}
-          key={`${pageNumber}-${index}-${sectionKey}-row-${i}-card-3`}
+          cardIndex={`${sectionKey}-${index}-row-${i}-card-3`}
+          key={`${sectionKey}-${index}-row-${i}-card-3`}
         />
       </Grid>
     ));

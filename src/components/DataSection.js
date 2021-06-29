@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MenuItem, Grid, Box, TextField } from '@material-ui/core';
+import { MenuItem, Grid, Box, TextField, Button } from '@material-ui/core';
 import SectionTitle from './SectionTitle';
 import DataRow from './DataRow';
 const DataSection = ({
@@ -10,11 +10,17 @@ const DataSection = ({
   keys,
   savedDataFunction,
   pageNumber,
+  handleRemoveSection,
 }) => {
   const [selectedOption, setSelectedOption] = useState('');
   const [index, setIndex] = useState('');
   const [sectionText, setSectionText] = useState('Section Name');
   const [rows, setRows] = useState(2);
+
+  const handleSectionTextChange = (e) => {
+    setSectionText(e.target.value);
+    savedDataFunction(`${sectionKey}-sectionText`, e.target.value);
+  };
 
   useEffect(() => {
     if (
@@ -26,20 +32,13 @@ const DataSection = ({
         ]
       );
     }
-    console.log(
-      JSON.parse(localStorage.getItem('savedData'))[`${sectionKey}-rows`]
-    );
+
     if (JSON.parse(localStorage.getItem('savedData'))[`${sectionKey}-rows`]) {
       setRows(
         JSON.parse(localStorage.getItem('savedData'))[`${sectionKey}-rows`]
       );
     }
-  }, [sectionKey]);
-
-  const handleSectionTextChange = (e) => {
-    setSectionText(e.target.value);
-    savedDataFunction(`${sectionKey}-sectionText`, e.target.value);
-  };
+  }, [jsonData, options, type, sectionKey, keys, pageNumber]);
 
   const handleRowChange = (e) => {
     setRows(parseInt(e.target.value));
@@ -69,7 +68,7 @@ const DataSection = ({
       return indexSearch.grades === selectedOption;
     });
     setIndex(foundIndex);
-  }, [selectedOption]);
+  }, [selectedOption, jsonData]);
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -77,22 +76,27 @@ const DataSection = ({
 
   return (
     <>
-      <SectionTitle text={sectionText} />
+      <SectionTitle
+        text={sectionText}
+        handleSectionTextChange={handleSectionTextChange}
+        sectionText={sectionText}
+      />
+
       <Box
         displayPrint='none'
         className='printToolbar'
         style={{ width: '100%' }}
       >
-        <Grid container spacing={1} justifyContent='center'>
+        <Grid container spacing={1} justifyContent='center' alignItems='center'>
           <Grid item sm={1}>
             <TextField
               select
               value={selectedOption}
               fullWidth
+              size='small'
               label={capitalizeFirstLetter(type)}
               onChange={handleChange}
               inputProps={{ 'aria-label': 'Without label' }}
-              style={{ margin: '4px' }}
             >
               {options.map((value) => {
                 return (
@@ -103,26 +107,25 @@ const DataSection = ({
               })}
             </TextField>
           </Grid>
-          <Grid item sm={2}>
-            <TextField
-              fullWidth
-              variant='outlined'
-              label='Section Name'
-              value={sectionText}
-              onChange={(e) => handleSectionTextChange(e)}
-              style={{ margin: '4px' }}
-            />
-          </Grid>
-
           <Grid item sm={1}>
             <TextField
               fullWidth
+              size='small'
               variant='outlined'
               label='Rows'
               value={parseInt(rows)}
               onChange={(e) => handleRowChange(e)}
-              style={{ margin: '4px' }}
             />
+          </Grid>
+          <Grid item md={2}>
+            <Button
+              variant='outlined'
+              fullWidth
+              size='large'
+              onClick={() => handleRemoveSection(sectionKey)}
+            >
+              Remove Section
+            </Button>
           </Grid>
         </Grid>
       </Box>

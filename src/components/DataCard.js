@@ -13,7 +13,6 @@ const DataCard = ({
       ? JSON.parse(localStorage.getItem('savedData'))[cardIndex]
       : null
   );
-
   useEffect(() => {
     savedDataFunction(cardIndex, selectedOption);
   }, [selectedOption]);
@@ -21,6 +20,9 @@ const DataCard = ({
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
   };
+
+  const [hidden, setHidden] = useState(true);
+  const handleHidden = () => setHidden(!hidden);
 
   const convertcardIndex = (selectedOption) => {
     let removedcardIndexWord = selectedOption
@@ -123,36 +125,43 @@ const DataCard = ({
               {data[groupIndex][selectedOption]}
             </Typography>
           )}
-          <Typography variant='dataDescription'>
-            {convertcardIndex(selectedOption)}
-          </Typography>
         </>
       ) : (
-        <>
-          <Typography variant='data' style={{ whiteSpace: 'nowrap ' }}>
-            ??
-          </Typography>
-
-          <Typography variant='dataDescription'>Select An Option</Typography>
-        </>
+        <Typography variant='data' style={{ whiteSpace: 'nowrap ' }}>
+          ??
+        </Typography>
       )}
-      <Box displayPrint='none' className='printItem'>
-        <TextField
-          select
-          fullWidth
-          label='Data Selection'
-          variant='outlined'
-          value={selectedOption}
-          onChange={handleChange}
-        >
-          {optionItems.map((value) => {
-            return (
-              <MenuItem value={value} key={value}>
-                {value}
-              </MenuItem>
-            );
-          })}
-        </TextField>
+      <Box>
+        {hidden ? (
+          <Typography
+            variant='dataDescription'
+            onClick={handleHidden}
+            style={{ cursor: 'pointer' }}
+          >
+            {selectedOption
+              ? convertcardIndex(selectedOption)
+              : 'Select An Option'}
+          </Typography>
+        ) : (
+          <TextField
+            select
+            fullWidth
+            size='small'
+            label='Data Selection'
+            variant='outlined'
+            value={selectedOption}
+            onChange={handleChange}
+            onBlur={handleHidden}
+          >
+            {optionItems.map((value) => {
+              return (
+                <MenuItem value={value} key={value}>
+                  {value}
+                </MenuItem>
+              );
+            })}
+          </TextField>
+        )}
       </Box>
     </Grid>
   );

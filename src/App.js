@@ -13,11 +13,17 @@ function App() {
   const savedDataFunction = (key, value) => {
     setSavedData({ ...savedData, [key]: value });
   };
+
+  const updateSavedData = (value) => {
+    setSavedData(value);
+  };
+
   useEffect(() => {
     if (localStorage.getItem('savedData')) {
       setSavedData(JSON.parse(localStorage.getItem('savedData')));
     }
   }, []);
+
   useEffect(() => {
     localStorage.setItem('savedData', JSON.stringify(savedData));
   }, [savedData]);
@@ -45,7 +51,12 @@ function App() {
               <SummerSchoolPaste />
             </Route>
             <Route path='/xrreport'>
-              <JSONPaste savedDataFunction={savedDataFunction} />
+              <JSONPaste
+                savedDataFunction={savedDataFunction}
+                updateSavedData={updateSavedData}
+                key='json-paste'
+                savedData={savedData}
+              />
             </Route>
           </Switch>
         </Router>
