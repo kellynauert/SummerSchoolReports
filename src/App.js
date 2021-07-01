@@ -36,7 +36,6 @@ function App() {
             displayPrint='none'
             style={{
               padding: '16px',
-              margin: '0 -5% ',
               backgroundColor: '#5F00ED',
               textAlign: 'center',
             }}

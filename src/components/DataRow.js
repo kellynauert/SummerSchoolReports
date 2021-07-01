@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Grid } from '@material-ui/core';
 import DataCard from './DataCard';
-
+import Chart from './Chart';
 const DataRow = ({
   keys,
   jsonData,
   index,
   rows,
   savedDataFunction,
-  pageNumber,
   sectionKey,
+  selectedOption,
 }) => {
   const [nRows, setNRows] = useState(2);
   useEffect(() => {
@@ -26,23 +26,23 @@ const DataRow = ({
         alignItems='flex-end'
         textAlign='center'
         style={{ margin: '24px 0' }}
-        key={`${sectionKey}-${index}-row-${i}-grid`}
+        key={`${sectionKey}-row-${i}-grid`}
       >
         <DataCard
           groupIndex={index}
           data={jsonData}
           savedDataFunction={savedDataFunction}
           optionItems={keys}
-          cardIndex={`${sectionKey}-${index}-row-${i}-card-1`}
-          key={`${sectionKey}-${index}-row-${i}-card-1`}
+          cardIndex={`${sectionKey}-row-${i}-card-1`}
+          key={`${sectionKey}-row-${i}-card-1`}
         />
         <DataCard
           groupIndex={index}
           data={jsonData}
           savedDataFunction={savedDataFunction}
           optionItems={keys}
-          cardIndex={`${sectionKey}-${index}-row-${i}-card-2`}
-          key={`${sectionKey}-${index}-row-${i}-card-2`}
+          cardIndex={`${sectionKey}-row-${i}-card-2`}
+          key={`${sectionKey}-row-${i}-card-2`}
         />
 
         <DataCard
@@ -50,12 +50,17 @@ const DataRow = ({
           savedDataFunction={savedDataFunction}
           data={jsonData}
           optionItems={keys}
-          cardIndex={`${sectionKey}-${index}-row-${i}-card-3`}
-          key={`${sectionKey}-${index}-row-${i}-card-3`}
+          cardIndex={`${sectionKey}-row-${i}-card-3`}
+          key={`${sectionKey}-row-${i}-card-3`}
         />
       </Grid>
     ));
   };
-  return <>{renderRows()}</>;
+  return (
+    <>
+      {renderRows()}
+      <Chart selectedOption={selectedOption} />
+    </>
+  );
 };
 export default DataRow;

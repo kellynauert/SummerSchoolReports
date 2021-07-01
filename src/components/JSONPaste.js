@@ -83,7 +83,7 @@ const JSONPaste = ({ savedDataFunction, updateSavedData, savedData }) => {
   };
 
   return (
-    <>
+    <div className='main-container'>
       <Box
         displayPrint='none'
         justifyContent='space-between'
@@ -159,7 +159,7 @@ const JSONPaste = ({ savedDataFunction, updateSavedData, savedData }) => {
         handleRemovePage={handleRemovePage}
         savedData={savedData}
       />
-    </>
+    </div>
   );
 };
 export default JSONPaste;

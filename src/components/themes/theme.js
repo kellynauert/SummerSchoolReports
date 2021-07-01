@@ -35,7 +35,6 @@ const theme = createTheme({
     },
     dataDescription: {
       fontSize: '12px',
-      marginTop: '16px',
       color: '#808285',
       display: 'block',
       fontWeight: '300',

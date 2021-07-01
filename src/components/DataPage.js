@@ -24,6 +24,7 @@ const DataPage = ({
   const [checked, setChecked] = useState(null);
   const [hidden, setHidden] = useState(true);
   const [sections, setSections] = useState([]);
+  const [school, setSchool] = useState('21st Century Charter School');
 
   const handleHidden = () => setHidden(!hidden);
 
@@ -116,6 +117,7 @@ const DataPage = ({
           sectionKey={`${pageNumber}-section-${i}`}
           savedDataFunction={savedDataFunction}
           handleRemoveSection={handleRemoveSection}
+          key={`${pageNumber}-section-${i}`}
         />
       ));
     }
@@ -148,7 +150,7 @@ const DataPage = ({
             <img src={CRELogo} alt='Logo' style={{ height: '30px' }} />
           </Grid>
           <Grid item sm={6}>
-            <Typography variant='info'>Cathedral High School 2021</Typography>
+            <Typography variant='info'>{school}</Typography>
           </Grid>
         </Grid>
 
